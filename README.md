@@ -1,4 +1,4 @@
-# Workshop: Backend Fundamentals - Gamestore
+<!-- # Workshop: Backend Fundamentals - Gamestore
 
 ## Overview
 
@@ -71,4 +71,4 @@ Port 8080 by default.
 | GET    | /api/board-games/:id | Returns a single board game by ID |
 | POST   | /api/board-games     | Adds a new board game             |
 | PUT    | /api/board-games/:id | Updates a board game              |
-| DELETE | /api/board-games/:id | Deletes a board game              |
+| DELETE | /api/board-games/:id | Deletes a board game              | -->
