@@ -1,7 +1,6 @@
-const client = require("./client");
-const { products, categories } = require("./data");
+const client = require("../client");
 
-// drop tables for video games and board games
+// drop tables for Capstone Store
 async function dropTables() {
   try {
     console.log("Dropping All Tables...");
@@ -17,7 +16,7 @@ async function dropTables() {
   }
 }
 
-// build tables for video games and board games
+// build tables for Capstone Store
 async function createTables() {
   try {
     console.log("Building All Tables...");
@@ -42,7 +41,6 @@ async function createTables() {
 
         CREATE TABLE category (
           id SERIAL PRIMARY KEY,
-          product_id INTEGER NOT NULL,
           name VARCHAR(255) UNIQUE NOT NULL,
           description TEXT
           );
@@ -77,49 +75,17 @@ async function createTables() {
   }
 }
 
-// create initial data for video games and board games
-async function createInitialData() {
-  try {
-    console.log("Creating Initial Data...");
-    await client.query(`
-      INSERT INTO product (category_id, name, description, imgUrl, stock, price, vendor)
-      VALUES
-      ${products
-        .map(
-          (product) => `(${product.category_id}, ${product.name}, 
-                            ${product.description}, ${product.imgUrl}, 
-                            ${product.stock}, ${product.price}, ${product.vendor})`
-        )
-        .join(",")}
-      `);
-
-    await client.query(`
-      INSERT INTO category (product_id, name, description)
-      VALUES
-      ${categories
-        .map(
-          (category) =>
-            `(${category.product_id}, ${category.name}, ${category.description})`
-        )
-        .join(",")}
-      `);
-  } catch (error) {
-    throw error;
-  }
-}
-
-// build all tables and create initial data
-async function rebuildDB() {
+// build all tables
+async function createDB() {
   try {
     client.connect();
     await dropTables();
     await createTables();
-    await createInitialData();
   } catch (error) {
     throw error;
   }
 }
 
 module.exports = {
-  rebuildDB,
+  createDB,
 };

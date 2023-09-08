@@ -1,5 +1,4 @@
 const client = require("./client");
-const util = require("util");
 
 // GET - /api/products - get all products
 async function getAllProducts() {

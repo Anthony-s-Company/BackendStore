@@ -1,4 +1,4 @@
 module.exports = {
-    ...require('./videoGames'),
-    ...require('./boardGames')
+    ...require('./product'),
+    ...require('./category')
 };
