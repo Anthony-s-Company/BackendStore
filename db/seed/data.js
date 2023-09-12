@@ -7,7 +7,7 @@ for (let i = 0; i < 50; i++) {
   products.push({
     category_id: Math.floor(Math.random() * 10) + 1,
     name: faker.commerce.productName(),
-    description: faker.commerceproductDescription,
+    description: faker.commerce.productDescription,
     imgUrl: faker.image.urlLoremFlickr({ category: "technics" }),
     stock: faker.number.int({ max: 100 }),
     price: faker.number.float({ max: 500 }),
@@ -17,9 +17,9 @@ for (let i = 0; i < 50; i++) {
 
 for (let i = 0; i < 10; i++) {
   categories.push({
-    product_id: Math.floor(Math.random() * 50) + 1,
+    // product_id: Math.floor(Math.random() * 50) + 1,
     name: faker.commerce.product(),
-    description: faker.commerceproductDescription,
+    description: faker.commerce.productDescription(),
   });
 }
 
