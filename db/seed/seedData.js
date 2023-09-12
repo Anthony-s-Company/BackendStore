@@ -29,7 +29,6 @@ async function createInitialData() {
     throw error;
   }
 }
-//   );
 
 // build all tables and create initial data
 async function rebuildDB() {
