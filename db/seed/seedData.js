@@ -1,6 +1,6 @@
-const client = require("../client");
+// const client = require("../client");
 const { products, categories } = require("./data");
-const db = require('../models/Store')
+const {createDB, client} = require('../models/Store')
 
 // create initial data for video games and board games
 async function createInitialData() {
@@ -36,8 +36,8 @@ async function createInitialData() {
 // build all tables and create initial data
 async function rebuildDB() {
   try {
-    client.connect();
-    await db.createDB()
+    //client.connect();
+    await createDB()
     await createInitialData();
   } catch (error) {
     throw error;

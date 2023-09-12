@@ -5,11 +5,7 @@ async function dropTables() {
   try {
     console.log("Dropping All Tables...");
     await client.query(`
-      DROP TABLE IF EXISTS User;
-      DROP TABLE IF EXISTS Category;
-      DROP TABLE IF EXISTS Product;
-      DROP TABLE IF EXISTS Item;
-      DROP TABLE IF EXISTS Order;
+      DROP TABLE IF EXISTS user;
     `);
   } catch (error) {
     throw error;
@@ -37,37 +33,6 @@ async function createTables() {
         active BOOLEAN DEFAULT true,
         "imgUrl" VARCHAR(255) DEFAULT 'https://i.imgur.com/An7G9J1b.jpg'
         );
-
-      CREATE TABLE category (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(255) UNIQUE NOT NULL,
-        description TEXT
-        );
-
-      CREATE TABLE product (
-        id SERIAL PRIMARY KEY,
-        category_id INTEGER NOT NULL,
-        name VARCHAR(255) UNIQUE NOT NULL,
-        description TEXT,
-        imgUrl VARCHAR(255) DEFAULT 'https://i.imgur.com/rS1Nzax.png',
-        stock INTEGER,
-        price FLOAT,
-        vendor VARCHAR(255)
-        );
-
-      CREATE TABLE item (
-        id SERIAL PRIMARY KEY,
-        product_id INTEGER NOT NULL,
-        qty INTEGER,
-        price FLOAT
-        );
-
-      CREATE TABLE order (
-        id SERIAL PRIMARY KEY,
-        item_id INTEGER NOT NULL,
-        status VARCHAR(50),
-        total FLOAT
-        );
     `);
   } catch (error) {
     throw error;
@@ -87,4 +52,5 @@ async function createDB() {
 
 module.exports = {
   createDB,
+  client,
 };
